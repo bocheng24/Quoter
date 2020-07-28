@@ -3,16 +3,18 @@ const quoteText = document.getElementById('quote-text');
 const author = document.getElementById('author');
 const newQuoteBtn = document.getElementById('quote-new');
 const tweetBtn = document.getElementById('twitter-btn');
-const loader = document.querySelector('.loader');
+const loader = document.getElementById('loader-id');
 
 const turnLoaderOn = () => {
-    loader.hidden = false;
+    loader.classList.add('loader');
     quoteContainer.hidden = true;
 }
 
 const turnLoaderOff = () => {
-    loader.hidden = true;
+
+    loader.classList.remove('loader');
     quoteContainer.hidden = false;
+
 }
 
 
@@ -29,7 +31,7 @@ async function getQuote() {
         quoteText.innerText = data.quoteText;
         quoteAuthor = data.quoteAuthor === "" ? "Unknow" : data.quoteAuthor;
         author.innerText = `- ${quoteAuthor}`;
-        
+
         turnLoaderOn();
     }
 
@@ -39,7 +41,7 @@ async function getQuote() {
     }
 }
 
-window.addEventListener('load', turnLoaderOff);
+// window.addEventListener('load', turnLoaderOff);
 newQuoteBtn.addEventListener('click', getQuote);
 
 tweetBtn.addEventListener('click', () => {
