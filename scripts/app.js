@@ -17,16 +17,16 @@ async function getQuote() {
 
     catch(e) {
         console.log(e);
-        getQuote();
+        //getQuote();
     }
 }
 
+getQuote();
 
 const data = '{"quoteText":"A lot of people give up just before theyre about to make it. You know you never know when that next obstacle is going to be the last one.  ", "quoteAuthor":"Chuck Norris", "senderName":"", "senderLink":"", "quoteLink":"http://forismatic.com/en/2bc6cf0fd5/"}'
 
 newQuoteBtn.addEventListener('click', () => {
-    console.log('clicked');
-    // data = getQuote();
+    data = getQuote();
     console.log(data);
     const dataJson = JSON.parse(data);
     quoteText.innerText = dataJson.quoteText;
